@@ -1,0 +1,78 @@
+ai_recycling_robot/
+│
+├── README.md                   # Project overview & setup steps
+├── requirements.txt            # Python dependencies for laptop side
+├── .gitignore
+│
+├── detection/                  # Laptop YOLOv8 detection code
+│   ├── best.pt                  # YOLOv8 trained model
+│   ├── detect.py                # Laptop script for camera detection
+│   ├── utils.py                 # Helper functions (draw boxes, etc.)
+│   └── test_videos/             # Sample footage for testing
+│
+├── pico_control/                # MicroPython scripts for Pico
+│   ├── main.py                   # Main servo control code
+│   ├── servo_driver.py           # Driver functions for Pico Servo Driver v1.2
+│   ├── commands.py               # Maps detection categories to arm movements
+│   ├── ir_sensor.py              # Reads IR sensor and triggers safety/detection logic
+│   └── calibration.py            # Calibration routines for servos & sensors
+│
+├── docs/                        # Documentation
+│   ├── wiring_diagram.png
+│   ├── wiring_diagram.txt        # ASCII version (for quick reference)
+│   ├── ir_sensor_diagram.png     # IR sensor wiring diagram
+│   ├── setup_guide.md            # Step-by-step installation guide
+│   └── flowcharts/
+│       ├── pick_and_place_flow.png
+│       ├── error_handling_flow.png
+│       └── ir_sensor_logic_flow.png
+│
+├── data/                        # Dataset for retraining & annotation
+│   ├── dataset.yaml              # YOLOv8 config for dataset
+│   ├── train/
+│   │   ├── images/
+│   │   │   ├── plastic/
+│   │   │   ├── metal/
+│   │   │   ├── glass/
+│   │   │   ├── paper/
+│   │   │   └── organic/
+│   │   └── labels/
+│   │       ├── plastic/
+│   │       ├── metal/
+│   │       ├── glass/
+│   │       ├── paper/
+│   │       └── organic/
+│   │
+│   ├── val/
+│   │   ├── images/
+│   │   │   ├── plastic/
+│   │   │   ├── metal/
+│   │   │   ├── glass/
+│   │   │   ├── paper/
+│   │   │   └── organic/
+│   │   └── labels/
+│   │       ├── plastic/
+│   │       ├── metal/
+│   │       ├── glass/
+│   │       ├── paper/
+│   │       └── organic/
+│   │
+│   └── test/
+│       ├── images/
+│       │   ├── plastic/
+│       │   ├── metal/
+│       │   ├── glass/
+│       │   ├── paper/
+│       │   └── organic/
+│       └── labels/
+│           ├── plastic/
+│           ├── metal/
+│           ├── glass/
+│           ├── paper/
+│           └── organic/
+│
+└── tests/                       # Test scripts
+    ├── test_camera.py            # Tests laptop webcam feed
+    ├── test_pico.py               # Tests Pico servo movement
+    ├── test_integration.py        # End-to-end detection + arm movement
+    └── test_ir_sensor.py          # Tests IR sensor detection & integration
